@@ -41,10 +41,34 @@ pr_stdio(const char *name, FILE *fp)
 }
 
 /*
- * The following is nonportable.
+ * The following is nonportable. 为了在 Linux/glibc 上更稳健，
+ * 我们优先使用 glibc 的扩展 API，而非窥探 FILE 的内部结构。
  */
 
-#if defined(_IO_UNBUFFERED)
+#if defined(__GLIBC__)
+
+#include <stdio_ext.h>
+
+int
+is_unbuffered(FILE *fp)
+{
+	/* 无缓冲通常意味着缓冲区大小为 0 */
+	return (__fbufsize(fp) == 0);
+}
+
+int
+is_linebuffered(FILE *fp)
+{
+	return (__flbf(fp) != 0);
+}
+
+int
+buffer_size(FILE *fp)
+{
+	return (int)__fbufsize(fp);
+}
+
+#elif defined(_IO_UNBUFFERED)
 
 int
 is_unbuffered(FILE *fp)

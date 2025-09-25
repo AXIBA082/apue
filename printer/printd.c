@@ -345,7 +345,7 @@ build_qonstart(void)
 	struct printreq	req;
 	char			dname[FILENMSZ], fname[FILENMSZ];
 
-	sprintf(dname, "%s/%s", SPOOLDIR, REQDIR);
+	snprintf(dname, sizeof(dname), "%s/%s", SPOOLDIR, REQDIR);
 	if ((dirp = opendir(dname)) == NULL)
 		return;
 	while ((entp = readdir(dirp)) != NULL) {
@@ -359,7 +359,7 @@ build_qonstart(void)
 		/*
 		 * Read the request structure.
 		 */
-		sprintf(fname, "%s/%s/%s", SPOOLDIR, REQDIR, entp->d_name);
+	snprintf(fname, sizeof(fname), "%s/%s/%s", SPOOLDIR, REQDIR, entp->d_name);
 		if ((fd = open(fname, O_RDONLY)) < 0)
 			continue;
 		nr = read(fd, &req, sizeof(struct printreq));
@@ -372,8 +372,8 @@ build_qonstart(void)
 			log_msg("build_qonstart: can't read %s: %s",
 			  fname, strerror(err));
 			unlink(fname);
-			sprintf(fname, "%s/%s/%s", SPOOLDIR, DATADIR,
-			  entp->d_name);
+						snprintf(fname, sizeof(fname), "%s/%s/%s", SPOOLDIR, DATADIR,
+							entp->d_name);
 			unlink(fname);
 			continue;
 		}
