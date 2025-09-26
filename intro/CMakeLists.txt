@@ -1,0 +1,5 @@
+include_directories(../include)
+add_executable(hello hello.c)
+target_link_libraries(hello apue)
+add_executable(shelll shell1.c)
+target_link_libraries(shelll apue)

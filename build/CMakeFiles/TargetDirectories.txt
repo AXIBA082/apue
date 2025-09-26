@@ -1,0 +1,9 @@
+/home/maorui/apue/build/CMakeFiles/rebuild_cache.dir
+/home/maorui/apue/build/CMakeFiles/edit_cache.dir
+/home/maorui/apue/build/lib/CMakeFiles/rebuild_cache.dir
+/home/maorui/apue/build/lib/CMakeFiles/edit_cache.dir
+/home/maorui/apue/build/lib/CMakeFiles/apue.dir
+/home/maorui/apue/build/intro/CMakeFiles/rebuild_cache.dir
+/home/maorui/apue/build/intro/CMakeFiles/edit_cache.dir
+/home/maorui/apue/build/intro/CMakeFiles/shelll.dir
+/home/maorui/apue/build/intro/CMakeFiles/hello.dir
